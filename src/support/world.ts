@@ -1,48 +1,44 @@
-import {setWorldConstructor, World, IWorldOptions} from '@cucumber/cucumber';
-import {Browser, BrowserContext, Page, chromium, firefox, webkit} from 'playwright';
+import {setWorldConstructor, World, IWorldOptions} from "@cucumber/cucumber";
+import {Browser, BrowserContext, Page, chromium, firefox, webkit} from "playwright";
+import {env} from "./env";
+
+type PageObjectCtor<T> = new (page: Page) => T;
 
 export class CustomWorld extends World {
     browser!: Browser;
     context!: BrowserContext;
     page!: Page;
+
+    baseUrl = env.baseUrl;
     scenarioData: Record<string, any> = {};
+
+    // ✅ generic cache (per scenario)
+    private poCache = new Map<Function, any>();
 
     constructor(options: IWorldOptions) {
         super(options);
     }
 
     async init() {
+        const browserName = env.browser;
+        const headless = env.headless;
 
-        const browserName = process.env.BROWSER ? process.env.BROWSER : 'chromium'
-        // console.log("⁠ "Browser name: ${browserName} ⁠);
+        const browserType =
+            browserName === "firefox" ? firefox :
+                browserName === "webkit" ? webkit :
+                    chromium;
 
-        switch (browserName.trim().toLowerCase()) {
+        this.browser = await browserType.launch({headless});
 
-            case 'chromium':
-            case 'chrome':
-                this.browser = await chromium.launch({
-                    headless: true,
-                    // args: ['--start-maximized'],
-                });
-                break;
+        this.context = await this.browser.newContext({
+            viewport: {width: 1920, height: 1080},
+            ignoreHTTPSErrors: true,
+        });
 
-            case 'firefox':
-                this.browser = await firefox.launch({
-                    headless: true,
-                    // args: ['--width=1920', '--height=1080']
-                });
-                break;
-            case 'webkit':
-                this.browser = await webkit.launch({
-                    headless: true,
-                    // args: ['--start-maximized'],
-                });
-                break;
-            default:
-                throw new Error('Unsupported browser!');
-        }
-        this.context = await this.browser.newContext({viewport: {width: 1920, height: 1080}, ignoreHTTPSErrors: true},);
         this.page = await this.context.newPage();
+
+        // ✅ reset per scenario
+        this.poCache.clear();
     }
 
     async close() {
@@ -57,6 +53,16 @@ export class CustomWorld extends World {
 
     getData(key: string) {
         return this.scenarioData[key];
+    }
+
+    // ✅ The only thing you need forever:
+    po<T>(Ctor: PageObjectCtor<T>): T {
+        const cached = this.poCache.get(Ctor);
+        if (cached) return cached as T;
+
+        const instance = new Ctor(this.page);
+        this.poCache.set(Ctor, instance);
+        return instance;
     }
 }
 

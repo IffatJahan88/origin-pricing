@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "cucumber-js"
+    "test": "cucumber-js",
+    "report": "node scripts/generate-report.js",
+    "test:report": "npm run test && npm run report"
   },
   "repository": {
     "type": "git",
@@ -23,10 +25,13 @@
     "@playwright/test": "^1.58.1",
     "dotenv": "^17.2.3",
     "expect": "^30.2.0",
+    "multiple-cucumber-html-reporter": "^3.9.3",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3"
   },
   "dependencies": {
+    "pdf-parse": "^1.1.1",
+    "pdfjs-dist": "^5.4.624",
     "playwright": "^1.58.1",
     "playwright-core": "^1.58.1"
   }
