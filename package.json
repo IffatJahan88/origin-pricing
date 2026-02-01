@@ -1,0 +1,33 @@
+{
+  "name": "origin-pricing",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "cucumber-js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IffatJahan88/origin-pricing.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/IffatJahan88/origin-pricing/issues"
+  },
+  "homepage": "https://github.com/IffatJahan88/origin-pricing#readme",
+  "devDependencies": {
+    "@cucumber/cucumber": "^12.6.0",
+    "@playwright/test": "^1.58.1",
+    "dotenv": "^17.2.3",
+    "expect": "^30.2.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "playwright": "^1.58.1",
+    "playwright-core": "^1.58.1"
+  }
+}

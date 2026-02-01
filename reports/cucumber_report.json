@@ -1,0 +1,63 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "origin-pricing-plan-pdf-validation;search-address,-open-plan-in-new-tab,-download-pdf-and-assert-it-is-gas",
+        "keyword": "Scenario",
+        "line": 4,
+        "name": "Search address, open plan in new tab, download PDF and assert it is Gas",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 567509499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 5,
+            "name": "I am on the pricing page",
+            "match": {
+              "location": "src/step-definitions/navigation.ts:4"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 5992875625
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 30136916
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@smoke",
+            "line": 1
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "origin-pricing-plan-pdf-validation",
+    "line": 2,
+    "keyword": "Feature",
+    "name": "Origin pricing plan PDF validation",
+    "tags": [
+      {
+        "name": "@smoke",
+        "line": 1
+      }
+    ],
+    "uri": "features/pricing-gas-plan.feature"
+  }
+]
