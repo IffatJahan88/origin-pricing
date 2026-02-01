@@ -6,7 +6,21 @@
   "scripts": {
     "test": "cucumber-js",
     "report": "node scripts/generate-report.js",
-    "test:report": "npm run test && npm run report"
+    "test:report": "npm run test && npm run report",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier . --write",
+    "format:check": "prettier . --check",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{js,cjs,mjs,json,md,yml,yaml}": [
+      "prettier --write"
+    ]
   },
   "repository": {
     "type": "git",
@@ -22,12 +36,22 @@
   "homepage": "https://github.com/IffatJahan88/origin-pricing#readme",
   "devDependencies": {
     "@cucumber/cucumber": "^12.6.0",
+    "@eslint/js": "^9.39.2",
     "@playwright/test": "^1.58.1",
     "dotenv": "^17.2.3",
+    "eslint": "^9.39.2",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-import-resolver-typescript": "^4.4.4",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-prettier": "^5.5.5",
     "expect": "^30.2.0",
+    "husky": "^8.0.0",
+    "lint-staged": "^16.2.7",
     "multiple-cucumber-html-reporter": "^3.9.3",
+    "prettier": "^3.8.1",
     "ts-node": "^10.9.2",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.54.0"
   },
   "dependencies": {
     "pdf-parse": "^1.1.1",

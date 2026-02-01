@@ -1,0 +1,167 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "origin-pricing-plan-pdf-validation;search-address,-open-plan-in-new-tab,-download-pdf-and-assert-it-is-gas",
+        "keyword": "Scenario",
+        "line": 4,
+        "name": "Search address, open plan in new tab, download PDF and assert it is Gas",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2234455042
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 5,
+            "name": "I am on the pricing page",
+            "match": {
+              "location": "src/step-definitions/CommonSteps.ts:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 744165874
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 6,
+            "name": "I search for an address \"17 Bolinda Road, Balwyn North, VIC 3104\"",
+            "match": {
+              "location": "src/step-definitions/PricingSteps.ts:7"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1007753082
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 7,
+            "name": "I verify the plans list is displayed",
+            "match": {
+              "location": "src/step-definitions/PricingSteps.ts:13"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3923432082
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "I uncheck the Electricity checkbox",
+            "match": {
+              "location": "src/step-definitions/PricingSteps.ts:19"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 111395708
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "I verify the plans list is still displayed",
+            "match": {
+              "location": "src/step-definitions/PricingSteps.ts:13"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 866550875
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 10,
+            "name": "I click on the Origin Everyday Rewards Variable plan link in the Plan BPID/EFS column",
+            "match": {
+              "location": "src/step-definitions/PricingSteps.ts:31"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 248274083
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 11,
+            "name": "Verify that the plan details page opens in a new tab",
+            "match": {
+              "location": "src/step-definitions/PricingSteps.ts:49"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 13662666
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 12,
+            "name": "Download the PDF to the local file system",
+            "match": {
+              "location": "src/step-definitions/CommonSteps.ts:42"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 242791333
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 13,
+            "name": "I verify that the PDF content confirms it is a Gas plan",
+            "match": {
+              "location": "src/step-definitions/CommonSteps.ts:24"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 82943000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 147961459
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@smoke",
+            "line": 1
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "origin-pricing-plan-pdf-validation",
+    "line": 2,
+    "keyword": "Feature",
+    "name": "Origin pricing plan PDF validation",
+    "tags": [
+      {
+        "name": "@smoke",
+        "line": 1
+      }
+    ],
+    "uri": "features/pricing-gas-plan.feature"
+  }
+]
