@@ -33,6 +33,7 @@
     "pdf-parse": "^1.1.1",
     "pdfjs-dist": "^5.4.624",
     "playwright": "^1.58.1",
-    "playwright-core": "^1.58.1"
+    "playwright-core": "^1.58.1",
+    "winston": "^3.19.0"
   }
 }
