@@ -1,11 +1,59 @@
 # Origin Pricing – Playwright Cucumber Automation Framework
 
-End-to-end test automation framework built using **Playwright**, **Cucumber**, and **TypeScript**, designed to be \*
-\*CI-ready**, **Docker-friendly\*\*, and easy to maintain.
+### What is this framework?
 
----
+This project is an end-to-end test automation framework for validating Origin Energy pricing journeys, including:
 
-## Tech Stack
+- Address search and plan discovery
+
+- Plan filtering and navigation
+
+- Opening plan details in new tabs
+
+- Downloading and validating PDF plans
+
+- Verifying Gas vs Electricity business rules
+
+The framework is built to be maintainable, scalable, and CI-ready.
+
+### Overall Tech Stack
+
+- Language: TypeScript
+
+- Test Runner: Cucumber (BDD)
+
+- Automation Tool: Playwright
+
+- Design Pattern: Page Object Model (POM)
+
+- Execution: Local (headed/headless) and Docker
+
+### Cucumber (BDD)
+
+Tests are written in Gherkin for readability and collaboration.
+Feature files describe behavior, while step definitions implement the logic in TypeScript.
+
+### Playwright
+
+Playwright handles all browser automation:
+
+- Reliable multi-browser support
+
+- New tab and download handling
+
+- Fast, stable headless execution for CI
+
+### Page Object Model
+
+Each page is represented by a dedicated class to:
+
+- Encapsulate locators and actions
+
+- Keep step definitions clean
+
+- Improve reuse and maintainability
+
+## Detailed Tech Stack
 
 - Playwright – browser automation
 - Cucumber (BDD) – feature-driven testing
@@ -72,6 +120,14 @@ npm run test:report
 
 ## Docker Usage
 
+The framework runs fully in Docker using the official Playwright image:
+
+Headless by default
+
+No local browser setup required
+
+Ideal for CI/CD pipelines
+
 Build image:
 
 ```bash
@@ -81,17 +137,18 @@ docker build -t origin-pricing-tests .
 Run tests:
 
 ```bash
-docker run --rm --env-file .env origin-pricing-tests
+docker run --rm --env-file .env -e HEADLESS=true origin-pricing-tests
 ```
 
 Run with reports:
 
 ```bash
-docker run --rm \
+docker run -it --rm \
   --env-file .env \
   -v "$(pwd)/reports:/app/reports" \
+  HEADLESS=true
   origin-pricing-tests \
-  npm run test:report
+  sh -c "npm run test:report"
 ```
 
 ---
@@ -99,6 +156,16 @@ docker run --rm \
 ## Code Quality
 
 ### ESLint
+
+ESLint enforces:
+
+- TypeScript best practices
+
+- Safer typing
+
+- Consistent code structure
+
+It errors block commits/pushes; warnings are visible but allowed.
 
 - Errors block commits and pushes
 - Warnings allowed
@@ -110,6 +177,14 @@ npm run lint:fix
 
 ### Prettier
 
+Prettier handles automatic code formatting:
+
+- Consistent spacing and quotes
+
+- Zero formatting debates
+
+- Runs automatically via Husky
+
 ```bash
 npm run format
 ```
@@ -117,6 +192,14 @@ npm run format
 ---
 
 ## Husky Hooks
+
+Husky enforces quality checks before code reaches the repository.
+
+- pre-commit: runs ESLint and Prettier on staged files
+
+- pre-push: runs full lint validation
+
+This prevents broken or poorly formatted code from being pushed.
 
 ### Pre-commit
 
@@ -130,6 +213,14 @@ npm run format
 Warnings never block pushes.
 
 ---
+
+## Reporting & Logging
+
+- Winston for structured execution logs
+
+- Screenshots captured on failure
+
+- Cucumber HTML reports with step-level visibility
 
 ## Reporting
 
@@ -153,3 +244,11 @@ reports/html/index.html
 
 - `.env`, `reports/`, `logs/`, `downloads/` are git-ignored
 - Docker and CI always run headless
+
+## Environment Configuration
+
+Runtime configuration is managed via .env:
+
+- BASE_URL=https://www.originenergy.com.au
+- HEADLESS=true
+- BROWSER=chromium

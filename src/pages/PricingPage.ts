@@ -90,7 +90,7 @@ export class PricingPage extends BasePage {
       throw new Error(`Column "${columnName}" not found in plans table`);
     }
 
-    // 2) Find row by plan name (NO tbody in your DOM)
+    // 2) Find row by plan name (NO tbody in the DOM)
     const rows = this.plansTable.locator('tr[data-id^="row-"]');
     const rowCount = await rows.count();
     await expect(rowCount, "Expected at least 1 plan row").toBeGreaterThan(0);
