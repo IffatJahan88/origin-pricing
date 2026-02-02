@@ -2,9 +2,11 @@
 FROM mcr.microsoft.com/playwright:v1.58.1-jammy
 
 WORKDIR /app
+ENV HEADLESS=true
 
 # Copy only package files first for better layer caching
-COPY package*.json ./
+COPY package*.json tsconfig.json ./
+
 
 # Install dependencies
 RUN npm ci
@@ -17,4 +19,3 @@ RUN npx playwright install --with-deps
 
 # Default command: run tests
 CMD ["npm", "run", "test"]
-ENV HEADLESS=true

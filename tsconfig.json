@@ -9,9 +9,7 @@
     "skipLibCheck": true,
     "allowJs": true,
     "noImplicitAny": false,
-    "types": [
-      "node"
-    ]
+    "types": ["node"]
   },
   "include": ["src/**/*.ts", "features/*.feature"]
 }

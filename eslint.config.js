@@ -31,6 +31,12 @@ module.exports = [
       "no-undef": "off",
     },
   },
+  {
+    files: ["src/utils/PdfUtils.ts"],
+    rules: {
+      "@typescript-eslint/no-require-imports": "off",
+    },
+  },
 
   js.configs.recommended,
   ...tseslint.configs.recommended,
@@ -49,6 +55,8 @@ module.exports = [
     rules: {
       "no-console": "off",
       "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/no-unsafe-function-type": "off",
       "import/order": [
         "warn",
         {

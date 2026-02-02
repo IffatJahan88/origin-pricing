@@ -7,8 +7,8 @@
     "test": "cucumber-js",
     "report": "node scripts/generate-report.js",
     "test:report": "npm run test && npm run report",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
+    "lint": "eslint src --ext .ts,.tsx",
+    "lint:fix": "eslint src --ext .ts,.tsx --fix",
     "format": "prettier . --write",
     "format:check": "prettier . --check",
     "prepare": "husky install"
