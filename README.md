@@ -1,6 +1,6 @@
 # Origin Pricing – Playwright Cucumber Automation Framework
 
-### What is this framework?
+### About the Framework
 
 This project is an end-to-end test automation framework for validating Origin Energy pricing journeys, including:
 
@@ -67,10 +67,10 @@ Each page is represented by a dedicated class to:
 
 ---
 
-## Project Structure
+## Overall Project Structure
 
 ```
-.
+
 ├── features/
 ├── src/
 │   ├── pages/
@@ -250,5 +250,5 @@ reports/html/index.html
 Runtime configuration is managed via .env:
 
 - BASE_URL=https://www.originenergy.com.au
-- HEADLESS=true
+- HEADLESS=false
 - BROWSER=chromium
